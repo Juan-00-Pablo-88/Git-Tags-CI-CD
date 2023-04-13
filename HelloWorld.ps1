@@ -1,1 +1,1 @@
-Write-Host "Hello World from Powershell Test"
+Write-Host "Hello World from Powershell Test"  > output.txt
