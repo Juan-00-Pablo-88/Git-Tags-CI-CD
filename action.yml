@@ -7,6 +7,14 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  command: |
-    pwsh -Command "[Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)"
-    pwsh /github/workspace/HelloWorld.ps1
+  args:
+    - pwsh
+    - -Command
+    - |
+      if ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator) {
+          pwsh /github/workspace/HelloWorld.ps1
+      }
+      else {
+          Write-Host "You do not have permission to run the script."
+          exit 1
+      }
