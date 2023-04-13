@@ -1,0 +1,9 @@
+name: GA on Docker
+description: Running GA on Docker
+inputs:
+  my_input:
+    description: 'Printing Hello World from Powershell'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
