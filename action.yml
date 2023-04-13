@@ -11,7 +11,7 @@ runs:
     - pwsh
     - -Command
     - |
-      if ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+      if (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
           pwsh /github/workspace/HelloWorld.ps1
       }
       else {
