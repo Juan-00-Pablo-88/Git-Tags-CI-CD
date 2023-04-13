@@ -4,6 +4,6 @@ COPY HelloWorld.ps1 /app/
 
 WORKDIR /app
 
-CMD [ "pwsh", "./HelloWorld.ps1" ]
+RUN pwsh -Command "if ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator) { exit 0 } else { exit 1 }"
 
-RUN pwsh -Command "[Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)"
+CMD [ "pwsh", "./HelloWorld.ps1" ]
